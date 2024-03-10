@@ -1,4 +1,6 @@
-use clap::{Args, Parser, Subcommand};
+mod command;
+
+use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
@@ -35,7 +37,7 @@ enum Commands {
     Pause,
 
     ///  Show processes running inside the container
-    Ps,
+    Ps(command::ps::PsArgs),
 
     /// Restore a container from a previous checkpoint. See runc-restore(8).
     Restore,
@@ -67,51 +69,51 @@ fn main() {
     match &cli.command {
         Commands::Checkpoint => {
             println!("'nurc checkpoint' was used")
-        },
+        }
         Commands::Create => {
             println!("'nurc create' was used")
-        },
+        }
         Commands::Delete => {
             println!("'nurc delete' was used")
-        },
+        }
         Commands::Events => {
             println!("'nurc events' was used")
-        },
+        }
         Commands::Exec => {
             println!("'nurc exec' was used")
-        },
+        }
         Commands::Kill => {
             println!("'nurc kill' was used")
-        },
+        }
         Commands::List => {
             println!("'nurc list' was used")
-        },
+        }
         Commands::Pause => {
             println!("'nurc pause' was used")
-        },
-        Commands::Ps => {
+        }
+        Commands::Ps(..) => {
             println!("'nurc ps' was used")
-        },
+        }
         Commands::Restore => {
             println!("'nurc restore' was used")
-        },
+        }
         Commands::Resume => {
             println!("'nurc resume' was used")
-        },
+        }
         Commands::Run => {
             println!("'nurc run' was used")
-        },
+        }
         Commands::Spec => {
             println!("'nurc spec' was used")
-        },
+        }
         Commands::Start => {
             println!("'nurc start' was used")
-        },
+        }
         Commands::State => {
             println!("'nurc state' was used")
-        },
+        }
         Commands::Update => {
             println!("'nurc update' was used")
-        },
+        }
     }
 }
