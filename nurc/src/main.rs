@@ -16,7 +16,7 @@ enum Commands {
     Checkpoint,
 
     /// Create a container
-    Create,
+    Create(command::create::CreateArgs),
 
     /// Delete any resources held by the container; often used with detached containers
     Delete(command::delete::DeleteArgs),
@@ -70,7 +70,7 @@ fn main() {
         Commands::Checkpoint => {
             println!("'nurc checkpoint' was used")
         }
-        Commands::Create => {
+        Commands::Create(..) => {
             println!("'nurc create' was used")
         }
         Commands::Delete(_) => {
