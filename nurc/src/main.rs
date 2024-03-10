@@ -19,7 +19,7 @@ enum Commands {
     Create,
 
     /// Delete any resources held by the container; often used with detached containers
-    Delete,
+    Delete(command::delete::DeleteArgs),
 
     /// Display container events, such as OOM notifications, CPU, memory, I/O and network statistics
     Events,
@@ -73,7 +73,7 @@ fn main() {
         Commands::Create => {
             println!("'nurc create' was used")
         }
-        Commands::Delete => {
+        Commands::Delete(_) => {
             println!("'nurc delete' was used")
         }
         Commands::Events => {
